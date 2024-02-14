@@ -25,7 +25,8 @@ fi
 setupWiz() {
     echo "Setting up and authenticating wiz"
     mkdir -p "$WIZ_DIR"
-    WIZ_API_SECRET=$(aws secretsmanager get-secret-value --secret-id global/buildkite/wiz-api-secret --query "SecretString" --output text)
+    #Mike - moving secrets from AWS Secrets Manager to env vars
+    #WIZ_API_SECRET=$(aws secretsmanager get-secret-value --secret-id global/buildkite/wiz-api-secret --query "SecretString" --output text)
     docker run \
         --rm -it \
         --mount type=bind,src="$WIZ_DIR",dst=/cli \
